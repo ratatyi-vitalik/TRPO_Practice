@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Главная">
+</head>
+
+
+<body>
+
+<header>
+    <div class="head">
+        <div class="buttons">
+            <a href="/timetable" class="btn btn-2">Расписание</a>
+            <a href="/" class="btn btn-2">Главная</a>
+        </div>
+        {% if not current_user.is_active %}
+        <div class="buttons">
+            <a href="/login" class="btn btn-2">Войти</a>
+            <a href="/register" class="btn btn-2">Регистрация</a>
+        </div>
+        {% elif current_user.role == "admin" %}
+        <a href="/panel" style="margin-right: 20px !important" class="btn btn-2">Админ панель</a>
+        {% else %}
+        <a href="/logout" style="margin-right: 20px !important" class="btn btn-2">Выйти из аккаунта</a>
+        {% endif %}
+    </div>
+</header>
+
+<div class="secta">
+    <form class="form-1" name="form" method="post">
+
+        <select name="new" id="new">
+            {% for type in types %}
+            <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="button" value="pick">Выбрать</button>
+    </form>
+    <div class="container">
+        <div class="catalog">
+            {% for new in news %}
+            <article class="news-cont">
+                <a>
+                    <img
+                            src="{{ new.image_path }}"
+                            class="img-1"
+                            loading="lazy"
+                    />
+                    <div class="news-desc">
+                        <h3 class="text-1">{{ new.title }}</h3>
+                        <div class="news-cont-2"><p>{{ new.description }}</p></div>
+                        <div class="news-cont-3">
+                            <span>12 дек 2024</span>
+                            <span>3 мин</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<footer></footer>
+
+</body>
+</html>

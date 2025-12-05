@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='panel.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cub.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Админ панель">
+</head>
+
+<body>
+
+<header>
+    <div class="head">
+        <a class="logo" href="/">Xolodinik.BY</a>
+        <p class="logo-text">Интернет магазин<br>холодильников</p>
+        <div class="header-div" style="display: flex; justify-content: center; padding-left: 395px; padding-right: 250px; margin-top: -50px;">
+            <a href="/panel/products" class="btn btn-2" style="margin: 0 0 0 0 !important">Товары</a>
+            <a href="/panel/orders" class="btn btn-2" style="margin: 0 0 0 10px !important">Список заказов</a>
+            <a href="/panel/sales" class="btn btn-2" style="margin: 0 0 0 10px !important">Создание акций</a>
+        </div>
+        <a href="/logout" class="btn btn-2" style="margin-right: 30px !important; margin-top: -39px !important;">Выйти из аккаунта</a>
+    </div>
+</header>
+
+<section>
+
+    <div class="container" style="display: flex; justify-content: center; align-items: flex-start; min-height: 850px;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div>{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+        <div class="create-product-container">
+            <div class="create-product-container-1">
+                <p class="text">Создать акцию</p>
+                <div class="order border-1">
+                    <form class="form-1" name="form" method="post">
+                        <select name="product" id="product">
+                            {% for prod in prods %}
+                            <option value="{{ prod.id }}">{{ prod.model }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="container-input">
+                            <label for="amount">Размер скидки(в %)</label>
+                            <input type="number" id="amount" name="amount" class="input" required autocomplete="off">
+                        </div>
+                        <button type="submit" name="button" value="create">Создать</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="create-product-container">
+            <div class="create-product-container-1">
+                <p class="text">Действующие акции</p>
+                <div class="order border-1">
+                    {% for sale in sales %}
+                    <div class="order-cont-1">
+                        <p class="text-1">{{ sale.prod.model }}</p>
+                        <p class="text-2">Дата </p>
+                        <p class="text-1">Размер: {{ sale.amount }}%</p>
+                        <form class="form-1" name="form" method="post">
+                            <button type="submit" name="button" value="delete{{sale.id}}">Удалить</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer></footer>
+
+</body>
+</html>

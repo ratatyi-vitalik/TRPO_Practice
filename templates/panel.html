@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='panel.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Админ панель">
+</head>
+
+<body>
+
+<header>
+    <div class="head">
+        <a class="btn btn-2" href="/">Главная</a>
+        <a href="/logout" class="btn btn-2" style="margin-right: 30px !important; margin-top: 20px !important;">Выйти из
+            аккаунта</a>
+    </div>
+</header>
+
+<section style="display: grid; place-items: center; min-height: 850px;">
+    <div style="display: grid; place-items: center; min-height: 830px;">
+        <div class="container">
+            <div class="create-news-container">
+                <div class="create-news-container-1">
+                    <p class="text">Добавить новость</p>
+                    <form enctype="multipart/form-data" class="form-1" name="form" method="post">
+
+                        <div class="container-input">
+                            <label for="title">Заголовок</label>
+                            <input type="text" id="title" name="title" class="input" required autocomplete="off">
+                        </div>
+
+                        <div class="container-input">
+                            <label for="description">Краткое описание</label>
+                            <textarea rows="3" cols="50" id="description" name="description" class="input" required
+                                      autocomplete="off"></textarea>
+                        </div>
+
+                        <div class="container-input">
+                            <label for="text">Развёрнутое описание</label>
+                            <textarea rows="4" cols="50" id="text" name="text" class="input" required
+                                      autocomplete="off"></textarea>
+                        </div>
+
+                        <select name="type" id="type">
+                            {% for type in types %}
+                            <option value="{{ type }}">{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                        <div>
+                            <label class="btn-label" for="image">Загрузить картинку</label>
+                            <input type="file" id="image" name="image" class="hidden-input" autocomplete="off">
+                        </div>
+                        <button type="submit" name="button" value="create">Создать</button>
+                    </form>
+                </div>
+            </div>
+            <div class="create-news-container" style="max-height: 240px">
+                <div class="create-news-container-1">
+                    <p class="text">Удалить новость</p>
+                    <form class="form-1" name="form" method="post">
+                        <select name="new" id="new">
+                            {% for new in news %}
+                            <option value="{{ new.id }}">{{ new.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" name="button" value="delete">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer></footer>
+
+</body>
+</html>

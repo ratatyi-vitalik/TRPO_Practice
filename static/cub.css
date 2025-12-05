@@ -1,0 +1,124 @@
+.rating-container {
+    margin-top: 7px;
+    max-height: 30px;
+    font-size: 1.5rem;
+    stroke: none;
+    box-sizing: border-box;
+    display: grid;
+    position: relative;
+    width: 167px;
+    text-align: left;
+}
+
+.review-star {
+    box-sizing: border-box;
+    position: relative;
+    color: #478ac9 !important;
+    width: 25px;
+    height: 25px;
+    margin: -26px 0 auto 7px;
+    border: none !important;
+}
+
+.border-1 {
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccd3db;
+    text-align: left;
+    width: 560px;
+    min-height: 424px;
+    height: auto;
+    margin: 30px 30px 0 0;
+    box-sizing: border-box;
+    flex: 1;
+    max-width: 100%;
+    transition-duration: inherit;
+    padding: 0 10px 0 10px;
+}
+
+.user-data {
+    font-size: 1rem;
+    text-align: left;
+    box-sizing: border-box;
+    position: relative;
+    flex: 1;
+    max-width: 100%;
+    transition-duration: inherit;
+    padding: 0;
+}
+
+.text-1 {
+    box-sizing: border-box;
+    display: table;
+    align-self: flex-start;
+    width: fit-content;
+    word-wrap: break-word;
+    position: relative;
+    line-height: 1.6;
+    font-size: 1.5rem;
+    margin: 5px auto 0 9px;
+}
+
+.login-cont {
+    -webkit-locale: "ru";
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.6;
+    font-family: 'Open Sans',sans-serif;
+    color: #111111;
+    pointer-events: initial;
+    font-size: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccd3db;
+    stroke: none;
+    text-align: left;
+    min-height: 55px;
+    width: 140px;
+    height: auto;
+    margin: 11px auto 20px 9px;
+}
+
+.orders-cont {
+    display: flex;
+    position: relative;
+    text-align: left;
+    width: 550px;
+    min-height: 422px;
+    height: auto;
+    margin: -423px auto 60px 590px;
+}
+
+.order-cont-1 {
+    position: relative;
+    flex: 1;
+    max-width: 100%;
+    transition-duration: inherit;
+}
+
+.order {
+    display: flex;
+    position: relative;
+    text-align: left;
+    min-height: 100px;
+    width: 530px;
+    height: auto;
+    margin: 10px auto 20px;
+}
+
+.text-2 {
+    display: table;
+    align-self: flex-start;
+    width: fit-content;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin: -38px 19px 0 auto;
+}

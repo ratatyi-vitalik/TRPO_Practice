@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='panel.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Регистрация">
+    <meta property="og:type" content="website">
+</head>
+
+
+<body>
+
+<header>
+    <div class="head">
+        <a class="btn btn-2" href="/">Главная</a>
+    </div>
+</header>
+
+
+<section>
+
+    <div class="container" style="display: grid; place-items: center; min-height: 850px;">
+        <div class="create-news-container" style="max-height: auto;">
+            <div class="create-news-container-1">
+                <p class="text">Регистрация</p>
+                <form class="form-1" name="form" method="post">
+                    <div class="container-input">
+                        <label for="login">Логин</label>
+                        <input type="text" id="login" name="login" class="input" required autocomplete="off">
+                    </div>
+                    <div class="container-input">
+                        <label for="phone_number">Электронная почта</label>
+                        <input type="text" id="phone_number" name="phone_number" class="input" required
+                               autocomplete="off">
+                    </div>
+                    <div class="container-input">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" class="input" required autocomplete="off">
+                    </div>
+                    <button type="submit">Зарегистрироватся</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer></footer>
+
+</body>
+</html>
