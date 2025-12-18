@@ -1,0 +1,105 @@
+body {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+    margin: 0;
+    line-height: inherit;
+    min-height: 100vh;
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+    font-family: Inter, system-ui, sans-serif;
+}
+
+.img-cont {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+    --tw-bg-opacity: 1;
+    overflow: hidden;
+    background-color: rgb(249 250 251);
+}
+
+.img {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: 384px;
+    width: 1500px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.container {
+    box-sizing: border-box;
+    --tw-bg-opacity: 1;
+    background-color: #ffffff;
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    width: 1500px;
+    margin-bottom: 30px;
+}
+
+.secta {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 30px;
+}
+
+.cont {
+    padding: 0 20px;
+}
+
+.date-cont {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.title {
+    margin: 5px 0 15px 0;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+.text {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgb(55 65 81);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.btn-1 {
+    border-width: 0;
+    background-color: inherit;
+    display: flex;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+}
+
+.flex-1 {
+    display: flex;
+    justify-content: space-between
+}
+
+form {
+    display: flex;
+}

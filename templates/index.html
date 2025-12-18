@@ -18,9 +18,16 @@
 
 <header>
     <div class="head">
-        <div class="buttons">
-            <a href="/timetable" class="btn btn-2">Расписание</a>
-            <a href="/" class="btn btn-2">Главная</a>
+        <div class="cont-img">
+            <a href="/">
+                <img src="/static/logo.png">
+            </a>
+        </div>
+        <div class="flex-cont">
+            <div class="buttons">
+                <a href="https://docs.google.com/document/d/1r-zSvZBWEPZ1v3APcNAQ6TVQpB2-pKTf/edit?rtpof=true&sd=true&tab=t.0"
+                   class="btn btn-2">Расписание</a>
+            </div>
         </div>
         {% if not current_user.is_active %}
         <div class="buttons">
@@ -37,8 +44,7 @@
 
 <div class="secta">
     <form class="form-1" name="form" method="post">
-
-        <select name="new" id="new">
+        <select name="type">
             {% for type in types %}
             <option value="{{ type }}">{{ type }}</option>
             {% endfor %}
@@ -46,10 +52,10 @@
         <button type="submit" name="button" value="pick">Выбрать</button>
     </form>
     <div class="container">
-        <div class="catalog">
+        <div class="catalog" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 370px); margin-bottom: 0;">
             {% for new in news %}
-            <article class="news-cont">
-                <a>
+            <article class="news-cont" {% if new.id % 5 != 0 %} style="margin-right: 20px;" {% endif %}>
+                <a href="/new?id={{ new.id }}">
                     <img
                             src="{{ new.image_path }}"
                             class="img-1"
@@ -59,12 +65,45 @@
                         <h3 class="text-1">{{ new.title }}</h3>
                         <div class="news-cont-2"><p>{{ new.description }}</p></div>
                         <div class="news-cont-3">
-                            <span>12 дек 2024</span>
-                            <span>3 мин</span>
+                            <span>{{ new.date[8:] + "." + new.date[5:7] + "." + new.date[:4] }}</span>
                         </div>
                     </div>
                 </a>
             </article>
+            {% endfor %}
+        </div>
+        {% if max_page > 1 %}
+        <div class="review-pages-cont">
+            {% if page >= 4 %}
+            <a class="review-pages" href="/?page=1"><-</a>
+            {% endif %}
+            {% if page - 2 >= 1 %}
+            <a class="review-pages" href="/?page={{ page - 2 }}">{{ page - 2 }}</a>
+            <a class="review-pages" href="/?page={{ page - 1 }}">{{ page - 1 }}</a>
+            {% elif page - 1 >= 1 %}
+            <a class="review-pages" href="/?page={{ page - 1 }}">{{ page - 1 }}</a>
+            {% endif %}
+            <a class="review-pages" href="/">{{ page }}</a>
+            {% if page + 2 <= max_page %}
+            <a class="review-pages" href="/?page={{ page + 1 }}">{{ page + 1 }}</a>
+            <a class="review-pages" href="/?page={{ page + 2 }}">{{ page + 2 }}</a>
+            {% elif page + 1 <= max_page %}
+            <a class="review-pages" href="/?page={{ page + 1 }}">{{ page + 1 }}</a>
+            {% endif %}
+            {% if page + 2 < max_page %}
+            <a class="review-pages" href="/?&page={{ max_page }}">-></a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="catalog" style="flex-direction: column;">
+            {% for section in sections %}
+            <div class="section-cont">
+                <p class="text-2">Кружок "{{ section.name}}"</p>
+                <p class="text-2">Преподаватели: {{ section.teacher}}</p>
+                <p class="text-2">{{ section.description}}</p>
+            </div>
             {% endfor %}
         </div>
     </div>

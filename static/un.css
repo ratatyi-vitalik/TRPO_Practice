@@ -44,6 +44,7 @@ header {
     unicode-bidi: isolate;
     border-width: 1px !important;
     border-color: #858e99;
+    background-color: #ffffff
 }
 
 footer {
@@ -87,4 +88,35 @@ html {
     border-width: 1px;
     background-color: #ffffff;
     color: #77aad9;
+}
+
+.flex-cont {
+    display: flex;
+    width: 100%;
+    justify-content: center
+}
+
+header .cont-img {
+    width: 90px;
+    height: 90px;
+}
+
+header img {
+    width: 90px;
+    height: 90px;
+}
+
+.error-message {
+  background-color: #ffe6e6;
+  border: 1px solid #ff1e46;
+  color: #4b4b5a;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.error-message strong {
+  color: #ff1e46;
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Главная">
+</head>
+
+
+<body>
+
+<header>
+    <div class="head">
+        <div class="cont-img">
+            <a href="/">
+                <img src="/static/logo.png">
+            </a>
+        </div>
+        <div class="flex-cont">
+            <div class="buttons">
+                <a href="https://docs.google.com/document/d/1r-zSvZBWEPZ1v3APcNAQ6TVQpB2-pKTf/edit?rtpof=true&sd=true&tab=t.0"
+                   class="btn btn-2">Расписание</a>
+            </div>
+        </div>
+        {% if not current_user.is_active %}
+        <div class="buttons">
+            <a href="/login" class="btn btn-2">Войти</a>
+            <a href="/register" class="btn btn-2">Регистрация</a>
+        </div>
+        {% elif current_user.role == "admin" %}
+        <a href="/panel" style="margin-right: 20px !important" class="btn btn-2">Админ панель</a>
+        {% else %}
+        <a href="/logout" style="margin-right: 20px !important" class="btn btn-2">Выйти из аккаунта</a>
+        {% endif %}
+    </div>
+</header>
+
+<div class="secta">
+    <article class="container">
+
+        <div class="img-cont">
+            <img src="{{ new.image_path }}" class="img">
+        </div>
+
+        <div class="cont">
+            <div class="flex-1">
+                <div class="date-cont">
+                    <span>15 декабря 2024</span>
+                </div>
+
+                <form name="form" method="post">
+                    <button id="btn" name="button" value="" class="btn-1">
+                        <svg width="30" height="30" viewBox="0 0 160 150" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M80 135
+           C 20 95, 5 60, 30 35
+           C 50 15, 80 25, 80 45
+           C 80 25, 110 15, 130 35
+           C 155 60, 140 95, 80 135 Z"
+                                  {% if current_user.is_authenticated and liked %} fill="#ff1e46" {% else %} fill="#4b4b5a" {% endif %}/>
+                        </svg>
+                    </button>
+                    <label for="btn" style="font-size: 24px; margin-top: 2px;">{{ likes }}</label>
+                </form>
+            </div>
+
+            <h1 class="title">{{ new.title }}</h1>
+            <div>
+                <p class="text">{{ new.text }}</p>
+            </div>
+        </div>
+    </article>
+</div>
+
+<footer></footer>
+
+</body>
+</html>

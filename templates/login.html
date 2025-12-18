@@ -6,14 +6,15 @@
     <title>Авторизация</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='panel.css') }}" media="screen">
     <link rel="stylesheet" href="{{ url_for('static', filename='un.css') }}" media="screen">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Регистрация">
     <meta property="og:type" content="website">
 </head>
 
 
-  <body>
+<body>
 
 <header>
     <div class="head">
@@ -23,34 +24,39 @@
 
 
 <section>
-
-    <div class="container" style="display: grid; place-items: center; min-height: 850px;">
+    <div class="container" style="display: grid; place-items: center; min-height: 850px; align-content: center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == "error" %}
+        <div class="error-message">
+            <strong>Ошибка:</strong> {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="create-news-container" style="max-height: 450px;">
             <div class="create-news-container-1">
                 <p class="text">Авторизация</p>
-                    <form class="form-1" name="form" method="post">
-                        <div class="container-input">
-                            <label for="login">Логин</label>
-                            <input type="text" id="login" name="login" class="input" required autocomplete="off">
-                        </div>
-                        <div class="container-input">
-                            <label for="password">Пароль</label>
-                            <input type="password" id="password" name="password" class="input" required autocomplete="off">
-                        </div>
-                        <div style="width: 500px; justify-items: center; display: grid;">
-                        <label for="remember">
-                            <input style="width: 20px; height: 20px;" type="checkbox" id="remember" name="remember">
-                            Запомнить меня
-                        </label>
-                        </div>
-                        <button type="submit">Войти</button>
-                    </form>
-                </div>
+                <form class="form-1" name="form" method="post">
+                    <div class="container-input">
+                        <label for="login">Логин</label>
+                        <input type="text" id="login" name="login" class="input" required autocomplete="off">
+                    </div>
+                    <div class="container-input">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" class="input" required autocomplete="off">
+                    </div>
+                    <button type="submit">Войти</button>
+                </form>
             </div>
         </div>
+    </div>
 
 </section>
 
 <footer></footer>
 
-</body></html>
+</body>
+</html>
